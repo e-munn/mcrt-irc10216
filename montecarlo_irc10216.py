@@ -18,12 +18,12 @@ Usage:
 import sys
 import numpy as np
 
-from constants import T_CMB, m_H, r_inner
-from envelope import Envelope
-from molecular_data import build_12CO, build_13CO
-from radiative_transfer import solve_all_shells
-from thermal_balance import solve_temperature
-from plotting import plot_temperature_profile, plot_convergence
+from mcrt.constants import T_CMB, m_H, r_inner
+from mcrt.envelope import Envelope
+from mcrt.molecular_data import build_12CO, build_13CO
+from mcrt.radiative_transfer import solve_all_shells
+from mcrt.thermal_balance import solve_temperature
+from mcrt.plotting import plot_temperature_profile, plot_convergence
 
 
 def run_model(max_iter=50, tol=0.01, damping_initial=0.3,
@@ -131,14 +131,14 @@ def main():
 
     # Plot results
     plot_temperature_profile(env.r, env.T_gas, T_dust=env.T_dust,
-                             filename='figure1.pdf')
+                             filename='results/figure1.pdf')
 
     if len(conv_hist) > 1:
         plot_convergence(range(1, len(conv_hist) + 1), conv_hist,
-                         filename='convergence.pdf')
+                         filename='results/convergence.pdf')
 
     # Also save data to text file
-    np.savetxt('temperature_profile.dat',
+    np.savetxt('results/temperature_profile.dat',
                np.column_stack([env.r, env.T_gas, env.T_dust, env.n_H2]),
                header='r[cm]  T_gas[K]  T_dust[K]  n_H2[cm^-3]',
                fmt='%14.6e')

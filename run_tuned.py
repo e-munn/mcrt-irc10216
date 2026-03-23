@@ -9,12 +9,12 @@ Changes from default:
 - sigma_UV: 2e-21 -> 1.5e-21 (slightly less UV shielding -> more PE heating)
 """
 import numpy as np
-import constants
-from envelope import Envelope
-from molecular_data import build_12CO, build_13CO
-from radiative_transfer import solve_all_shells
-from thermal_balance import solve_temperature
-from plotting import plot_temperature_profile, plot_convergence
+import mcrt.constants as constants
+from mcrt.envelope import Envelope
+from mcrt.molecular_data import build_12CO, build_13CO
+from mcrt.radiative_transfer import solve_all_shells
+from mcrt.thermal_balance import solve_temperature
+from mcrt.plotting import plot_temperature_profile, plot_convergence
 
 # Override constants for tuning
 constants.G0_ISRF = 1.7
@@ -23,9 +23,9 @@ constants.sigma_UV = 1.5e-21
 
 # Re-import after override so thermal_balance picks up the changes
 import importlib
-import thermal_balance
-importlib.reload(thermal_balance)
-from thermal_balance import solve_temperature
+import mcrt.thermal_balance
+importlib.reload(mcrt.thermal_balance)
+from mcrt.thermal_balance import solve_temperature
 
 def run_tuned():
     n_shells = 60
@@ -42,7 +42,7 @@ def run_tuned():
     print(f"co_cooling_frac = 0.15")
     print("-" * 60)
 
-    from constants import m_H
+    from mcrt.constants import m_H
     convergence_history = []
 
     for iteration in range(50):
@@ -82,10 +82,10 @@ def run_tuned():
 
     # Save tuned plot
     plot_temperature_profile(env.r, env.T_gas, T_dust=env.T_dust,
-                             filename='figure1_tuned.pdf',
+                             filename='results/figure1_tuned.pdf',
                              title='IRC+10216 $T_K(r)$ -- Tuned LVG Model')
 
-    np.savetxt('temperature_profile_tuned.dat',
+    np.savetxt('results/temperature_profile_tuned.dat',
                np.column_stack([env.r, env.T_gas, env.T_dust, env.n_H2]),
                header='r[cm]  T_gas[K]  T_dust[K]  n_H2[cm^-3]',
                fmt='%14.6e')

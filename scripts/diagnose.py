@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """Diagnostic script to check heating/cooling balance at inner shells."""
 import numpy as np
-from constants import m_H, h_planck, k_boltz, T_CMB
-from envelope import Envelope
-from molecular_data import build_12CO, build_13CO
-from radiative_transfer import solve_statistical_equilibrium
-from thermal_balance import (
+from mcrt.constants import m_H, h_planck, k_boltz, T_CMB
+from mcrt.envelope import Envelope
+from mcrt.molecular_data import build_12CO, build_13CO
+from mcrt.radiative_transfer import solve_statistical_equilibrium
+from mcrt.thermal_balance import (
     heating_dustgas, heating_IR_pumping, heating_photoelectric,
     cooling_CO_line, gamma_H2
 )

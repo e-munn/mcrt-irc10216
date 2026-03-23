@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Compare cooling formula with escape-probability estimate."""
 import numpy as np
-from constants import m_H, h_planck, k_boltz, c_light, T_CMB
-from envelope import Envelope
-from molecular_data import build_12CO
-from radiative_transfer import sobolev_tau, escape_probability, planck_Bnu, solve_statistical_equilibrium
+from mcrt.constants import m_H, h_planck, k_boltz, c_light, T_CMB
+from mcrt.envelope import Envelope
+from mcrt.molecular_data import build_12CO
+from mcrt.radiative_transfer import sobolev_tau, escape_probability, planck_Bnu, solve_statistical_equilibrium
 
 env = Envelope(n_shells=60)
 mol = build_12CO(n_levels=30)

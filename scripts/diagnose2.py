@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Check escape probabilities and optical depths at inner shell."""
 import numpy as np
-from constants import m_H, h_planck, k_boltz, c_light
-from envelope import Envelope
-from molecular_data import build_12CO
-from radiative_transfer import sobolev_tau, escape_probability
+from mcrt.constants import m_H, h_planck, k_boltz, c_light
+from mcrt.envelope import Envelope
+from mcrt.molecular_data import build_12CO
+from mcrt.radiative_transfer import sobolev_tau, escape_probability
 
 env = Envelope(n_shells=60)
 mol = build_12CO(n_levels=30)

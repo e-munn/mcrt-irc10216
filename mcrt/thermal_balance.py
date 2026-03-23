@@ -22,7 +22,7 @@ this self-consistently.
 """
 import numpy as np
 from scipy.integrate import solve_ivp
-from constants import (
+from mcrt.constants import (
     M_dot, L_star, c_light, k_boltz, m_H, mu, T_CMB,
     h_planck, G0_ISRF, epsilon_pe, T_star, R_star, X_12CO
 )

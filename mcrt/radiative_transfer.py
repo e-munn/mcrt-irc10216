@@ -9,7 +9,7 @@ velocity gradient. This decouples the radiative transfer from the global
 problem and allows fast, shell-by-shell solution of statistical equilibrium.
 """
 import numpy as np
-from constants import (
+from mcrt.constants import (
     h_planck, c_light, k_boltz, T_CMB, m_H
 )
 

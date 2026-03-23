@@ -5,7 +5,7 @@ Provides the radial grid and precomputed physical quantities:
 velocity, density, dust temperature, initial gas temperature guess.
 """
 import numpy as np
-from constants import (
+from mcrt.constants import (
     r_inner, r_outer, n_shells, M_dot, v_inf, r0, v_turb,
     m_H, mu, X_12CO, X_13CO, T_dust_inner, r_dust, dust_T_power,
     Q_inner, Q_outer, r_Q_break, T_CMB, k_boltz, c_light,
@@ -96,4 +96,4 @@ class Envelope:
 
 
 # Import h_planck at module level for use in methods
-from constants import h_planck
+from mcrt.constants import h_planck
